@@ -17,3 +17,5 @@ router.get("/barbearia/:id", getBarbeirosByBarbearia);
 router.post("/", createBarbeiro);
 router.put("/:id", updateBarbeiro);
 router.delete("/:id", deleteBarbeiro);
+
+export default router;
