@@ -11,7 +11,7 @@ export const getAgendamentosByUser = async (req: any, res: Response) => {
   res.json(agendamentos);
 };
 
-export const getAgendamentosByagendamento = async (req: any, res: Response) => {
+export const getAgendamentosByBarbeiro = async (req: any, res: Response) => {
   const agendamento = req.params.id;
 
   const agendamentos = await Agendamento.find({
