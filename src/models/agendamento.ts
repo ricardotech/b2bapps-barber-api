@@ -7,6 +7,7 @@ interface AgendamentoModel extends Document {
   criador: Types.ObjectId;
   servicos: Types.ObjectId[];
   inicio: Date;
+  status: "Confirmado" | "Cancelado" | "Realizado";
   fim: Date;
 }
 
