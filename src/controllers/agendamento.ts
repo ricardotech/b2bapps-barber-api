@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import agendamento from "../models/agendamento";
 import Agendamento from "../models/agendamento";
 
-export const getAgendamentosByUser = async (req: any, res: Response) => {
+export const getAgendamentosByUsuario = async (req: any, res: Response) => {
   const user = req.userId;
 
   const agendamentos = await Agendamento.find({
