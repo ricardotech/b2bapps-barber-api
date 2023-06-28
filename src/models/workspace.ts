@@ -41,7 +41,7 @@ interface Avaliacao {
   userId: Types.ObjectId;
 }
 
-interface BarbeariaModel extends Document {
+interface WorkspaceModel extends Document {
   nome: string;
   criador: Types.ObjectId;
   endereco: Endereco;
@@ -52,7 +52,7 @@ interface BarbeariaModel extends Document {
   dados: Dados;
 }
 
-const barbeariaSchema = new Schema<BarbeariaModel>({
+const workspaceSchema = new Schema<WorkspaceModel>({
   nome: {
     type: String,
     required: true,
@@ -103,6 +103,6 @@ const barbeariaSchema = new Schema<BarbeariaModel>({
   },
 });
 
-const Barbearia = mongoose.model<BarbeariaModel>("Barbearia", barbeariaSchema);
+const Workspace = mongoose.model<WorkspaceModel>("Workspace", workspaceSchema);
 
-export default Barbearia;
+export default Workspace;
