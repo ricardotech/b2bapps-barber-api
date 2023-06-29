@@ -57,7 +57,7 @@ const barbeariaSchema = new Schema<BarbeariaModel>({
     type: String,
     required: true,
   },
-  criador: Types.ObjectId,
+  criador: String,
   endereco: {
     cep: String,
     rua: String,
@@ -93,7 +93,7 @@ const barbeariaSchema = new Schema<BarbeariaModel>({
       email: String,
     },
     dados_cpf: {
-      user: Types.ObjectId,
+      user: String,
       identidade: Number,
       cpf: Number,
       data_nascimento: Date,

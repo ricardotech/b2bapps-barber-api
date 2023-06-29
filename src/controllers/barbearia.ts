@@ -20,9 +20,7 @@ export const createBarbearia = async ({ body }: Request, res: Response) => {
     logo_uri,
     imagens_uri,
     slogan,
-    dados,
-    dados_cnpj,
-    dados_cpf,
+    dados
   } = body;
 
   const barbearia = new Barbearia({
@@ -33,9 +31,7 @@ export const createBarbearia = async ({ body }: Request, res: Response) => {
     logo_uri,
     imagens_uri,
     slogan,
-    dados,
-    dados_cnpj,
-    dados_cpf,
+    dados
   });
 
   const barbeariaNovo = await barbearia.save();
@@ -47,15 +43,11 @@ export const updateBarbearia = async (req: Request, res: Response) => {
 
   if (barbearia) {
     barbearia.nome = req.body.nome ?? barbearia.nome;
-    barbearia.endereco = req.body.email ?? barbearia.endereco;
+    barbearia.endereco = req.body.endereco ?? barbearia.endereco;
     barbearia.logo_uri = req.body.logo_uri ?? barbearia.logo_uri;
     barbearia.imagens_uri = req.body.imagens_uri ?? barbearia.imagens_uri;
     barbearia.slogan = req.body.slogan ?? barbearia.slogan;
     barbearia.dados = req.body.dados ?? barbearia.dados;
-    barbearia.dados.dados_cnpj =
-      req.body.dados.dados_cnpj ?? barbearia.dados.dados_cnpj;
-    barbearia.dados.dados_cpf =
-      req.body.dados.dados_cpf ?? barbearia.dados.dados_cpf;
 
     const barbeariaAtualizado = await barbearia.save();
     res.json(barbeariaAtualizado);
