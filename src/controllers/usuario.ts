@@ -48,7 +48,7 @@ export const createUsuario = async (req: any, res: Response) => {
 };
 
 export const updateUsuario = async (req: Request, res: Response) => {
-  const usuario = await Usuario.findById(req.params.id).lean();
+  const usuario = await Usuario.findById(req.params.id);
 
   if (usuario) {
     usuario.nome = req.body.nome ?? usuario.nome;

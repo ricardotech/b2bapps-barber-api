@@ -3,19 +3,19 @@ import agendamento from "../models/agendamento";
 import Agendamento from "../models/agendamento";
 
 export const getAgendamentosByUsuario = async (req: any, res: Response) => {
-  const user = req.userId;
+  const usuario = req.params.id;
 
   const agendamentos = await Agendamento.find({
-    user: user,
+    usuario: usuario,
   }).lean();
   res.json(agendamentos);
 };
 
 export const getAgendamentosByBarbeiro = async (req: any, res: Response) => {
-  const agendamento = req.params.id;
+  const barbeiro = req.params.id;
 
   const agendamentos = await Agendamento.find({
-    agendamento: agendamento,
+    barbeiro: barbeiro,
   }).lean();
   res.json(agendamentos);
 };
@@ -35,10 +35,10 @@ export const getAgendamento = async (req: Request, res: Response) => {
 };
 
 export const createAgendamento = async ({ body }: Request, res: Response) => {
-  const { user, barbeiro, barbearia, criador, servicos, inicio, fim } = body;
+  const { usuario, barbeiro, barbearia, criador, servicos, inicio, fim } = body;
 
   const agendamento = new Agendamento({
-    user,
+    usuario,
     barbeiro,
     barbearia,
     criador,
@@ -71,8 +71,8 @@ export const cancelarAgendamento = async (req: Request, res: Response) => {
   if (agendamento) {
     agendamento.status = "Cancelado";
 
-    const agendamentoAtualizado = await agendamento.save();
-    res.json(agendamentoAtualizado);
+    await agendamento.save();
+    res.send("Agendamento cancelado");
   } else {
     res.status(404).json({ message: "Agendamento não encontrado" });
   }

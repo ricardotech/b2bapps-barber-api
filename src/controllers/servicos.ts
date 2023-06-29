@@ -15,16 +15,16 @@ export const getServico = async (req: Request, res: Response) => {
 };
 
 export const createServico = async (req: any, res: Response) => {
-  const barbearia = req.workspaceId;
-  const user = req.userId;
+  // const barbearia = req.workspaceId;
+  // const user = req.userId;
 
-  const workspace = await Workspace.findById(barbearia).lean();
+  // const workspace = await Workspace.findById(barbearia).lean();
 
-  if (!workspace || workspace.criador !== user) {
-    return res.status(403).send("Falha ao criar serviço.");
-  }
+  // if (!workspace || workspace.criador !== user) {
+  //   return res.status(403).send("Falha ao criar serviço.");
+  // }
 
-  const { nome, descricao, imagens, preco, duracao_minutos } = req.body;
+  const { nome, descricao, imagens, preco, duracao_minutos, barbearia } = req.body;
 
   const servico = new Servico({
     nome,
