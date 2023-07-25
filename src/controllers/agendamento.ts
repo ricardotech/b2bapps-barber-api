@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import agendamento from "../models/agendamento";
 import Agendamento from "../models/agendamento";
 
 export const getAgendamentosByUsuario = async (req: any, res: Response) => {

@@ -10,7 +10,10 @@ import {
 
 const router = express.Router();
 
+// Rotas privadas [Interna]
 router.get("/", getBarbearias);
+
+// Rotas publicas
 router.get("/:id", getBarbearia);
 router.post("/", createBarbearia);
 router.put("/:id", updateBarbearia);

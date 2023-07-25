@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import Servico from "../models/servico";
-import Workspace from "../models/workspace";
 
 export const getServicosByBarbearia = async (req: Request, res: Response) => {
   const servicos = await Servico.find({
