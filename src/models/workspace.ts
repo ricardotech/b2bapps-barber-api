@@ -33,13 +33,6 @@ interface Dados {
   documento_tipo: "CNPJ" | "CPF";
   dados_cnpj?: DadosCNPJ;
   dados_cpf?: DadosCPF;
-  /*
-  Utilizado para armazenar o horário de abertura e fechamento do estabelecimento.
-  Irá armazenar apenas o horário, a data será ignorada.
-  Irá definir a faixa de renderização dos horários disponíveis para agendamento.
-  */
-  horario_abertura: Date;
-  horario_fechamento: Date;
 }
 
 interface Avaliacao {

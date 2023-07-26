@@ -51,6 +51,8 @@ interface BarbeariaModel extends Document {
   imagens_uri?: string[];
   slogan?: string;
   dados: Dados;
+  horario_abertura: Date;
+  horario_fechamento: Date;
 }
 
 const barbeariaSchema = new Schema<BarbeariaModel>({
@@ -107,6 +109,14 @@ const barbeariaSchema = new Schema<BarbeariaModel>({
       filiacao: String,
     },
   },
+  horario_abertura: {
+    type: Date,
+    required: true,
+  },
+  horario_fechamento: {
+    type: Date,
+    required: true,
+  }
 });
 
 const Barbearia = mongoose.model<BarbeariaModel>("Barbearia", barbeariaSchema);
