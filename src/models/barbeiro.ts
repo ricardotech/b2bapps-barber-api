@@ -15,8 +15,9 @@ interface HorarioTrabalho {
 interface BarbeiroModel extends Document {
   nome: string;
   email: string;
-  telefone: number;
+  telefone: string;
   avatar?: string;
+  cpf?: string;
   especialidades: string[];
   horarioTrabalho: HorarioTrabalho[];
   avaliacoes: Avaliacao[];
@@ -30,14 +31,17 @@ const barbeiroSchema = new Schema<BarbeiroModel>({
   },
   email: {
     type: String,
-    required: true,
     unique: true,
   },
   telefone: {
-    type: Number,
+    type: String,
     required: true,
   },
   avatar: String,
+  cpf: {
+    required: true,
+    type: String,
+  },
   especialidades: [String],
   horarioTrabalho: [
     {
@@ -50,10 +54,10 @@ const barbeiroSchema = new Schema<BarbeiroModel>({
     {
       nota: Number,
       comentario: String,
-      userId: String
+      userId: String,
     },
   ],
-  barbearia: String
+  barbearia: String,
 });
 
 const Barbeiro = mongoose.model<BarbeiroModel>("Barbeiro", barbeiroSchema);

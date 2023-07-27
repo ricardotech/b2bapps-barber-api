@@ -14,16 +14,17 @@ interface DadosCNPJ {
   nome_empresarial: string;
   nome_fantasia: string;
   cnpj: string;
-  capital_social?: number;
-  data_abertura?: Date;
-  telefone: number;
+  telefone: string;
   email: string;
+  data_abertura?: Date;
+  capital_social?: number;
+  inscricao_estadual?: string;
 }
 
 interface DadosCPF {
   user: Types.ObjectId;
-  identidade?: number;
-  cpf?: number;
+  identidade?: string;
+  cpf?: string;
   data_nascimento?: Date;
   naturalidade?: string;
   filiacao?: string;
@@ -37,7 +38,7 @@ interface Dados {
 
 interface Avaliacao {
   nota: number;
-  comentario: string;
+  comentario?: string;
   userId: Types.ObjectId;
 }
 
@@ -50,6 +51,8 @@ interface BarbeariaModel extends Document {
   imagens_uri?: string[];
   slogan?: string;
   dados: Dados;
+  horario_abertura: Date;
+  horario_fechamento: Date;
 }
 
 const barbeariaSchema = new Schema<BarbeariaModel>({
@@ -94,13 +97,26 @@ const barbeariaSchema = new Schema<BarbeariaModel>({
     },
     dados_cpf: {
       user: String,
-      identidade: Number,
-      cpf: Number,
+      identidade: {
+        type: String,
+      },
+      cpf: {
+        type: String,
+        max: 11,
+      },
       data_nascimento: Date,
       naturalidade: String,
       filiacao: String,
     },
   },
+  horario_abertura: {
+    type: Date,
+    required: true,
+  },
+  horario_fechamento: {
+    type: Date,
+    required: true,
+  }
 });
 
 const Barbearia = mongoose.model<BarbeariaModel>("Barbearia", barbeariaSchema);

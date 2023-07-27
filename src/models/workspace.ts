@@ -16,7 +16,7 @@ interface DadosCNPJ {
   cnpj: string;
   capital_social?: number;
   data_abertura?: Date;
-  telefone: number;
+  telefone: string;
   email: string;
 }
 
@@ -89,7 +89,7 @@ const workspaceSchema = new Schema<WorkspaceModel>({
       cnpj: String,
       capital_social: Number,
       data_abertura: Date,
-      telefone: Number,
+      telefone: String,
       email: String,
     },
     dados_cpf: {

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
-import agendamento from "../models/agendamento";
 import Agendamento from "../models/agendamento";
+import Barbearia from "../models/barbearia";
+import Barbeiro from "../models/barbeiro";
 
 export const getAgendamentosByUsuario = async (req: any, res: Response) => {
   const usuario = req.params.id;
@@ -35,20 +36,80 @@ export const getAgendamento = async (req: Request, res: Response) => {
 };
 
 export const createAgendamento = async ({ body }: Request, res: Response) => {
-  const { usuario, barbeiro, barbearia, criador, servicos, inicio, fim } = body;
+  const barbearia = await Barbearia.findById(body.barbearia);
 
-  const agendamento = new Agendamento({
-    usuario,
-    barbeiro,
-    barbearia,
-    criador,
-    servicos,
-    inicio,
-    fim,
+  if (!barbearia) {
+    return res.status(404).json({ message: "Barbearia não encontrada" });
+  }
+
+  if (
+    body.inicio < barbearia.horario_abertura ||
+    body.fim > barbearia.horario_fechamento
+  ) {
+    return res.status(400).json({ message: "Horário fora do expediente" });
+  }
+
+  const barbeiro = await Barbeiro.findById(body.barbeiro._id);
+
+  if (!barbeiro) {
+    return res.status(404).json({ message: "Barbeiro não encontrado" });
+  }
+
+  for(const servico of body.servicos) {
+    if(!barbeiro.especialidades.includes(servico._id)) {
+      return res.status(400).json({ message: `O serviço ${servico.nome} não é oferecido pelo barbeiro` });
+    }
+  }
+
+  const data_inicio = new Date(body.inicio);
+  data_inicio.setUTCHours(0, 0, 0, 0);
+  const data_fim = new Date(body.inicio);
+  data_fim.setUTCHours(23, 59, 59, 999);
+
+  const agendamentos_do_barbeiro = await Agendamento.find({
+    barbeiro: body.barbeiro._id,
+    inicio: { $gte: data_inicio },
+    fim: { $lte: data_fim },
   });
 
-  const agendamentoNovo = await agendamento.save();
-  res.json(agendamentoNovo);
+  if (agendamentos_do_barbeiro.length === 0) {
+    const { usuario, barbeiro, barbearia, criador, servicos, inicio, fim } =
+      body;
+
+    const agendamento = new Agendamento({
+      usuario,
+      barbeiro,
+      barbearia,
+      criador,
+      servicos,
+      inicio,
+      fim,
+    });
+
+    const agendamentoNovo = await agendamento.save();
+    return res.json(agendamentoNovo);
+  } else {
+    for (const agendamento of agendamentos_do_barbeiro) {
+      if (body.inicio >= agendamento.inicio && body.inicio <= agendamento.fim) {
+        return res.status(400).json({ message: "Horário indisponível" });
+      }
+    }
+    const { usuario, barbeiro, barbearia, criador, servicos, inicio, fim } =
+      body;
+
+    const agendamento = new Agendamento({
+      usuario,
+      barbeiro,
+      barbearia,
+      criador,
+      servicos,
+      inicio,
+      fim,
+    });
+
+    const agendamentoNovo = await agendamento.save();
+    return res.json(agendamentoNovo);
+  }
 };
 
 export const updateAgendamento = async (req: Request, res: Response) => {
