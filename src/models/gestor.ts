@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { documentoPessoaSchema } from ".";
 
 const gestorSchema = new mongoose.Schema({
   nome: {
@@ -27,11 +28,15 @@ const gestorSchema = new mongoose.Schema({
     allowNull: true,
     default: null,
   },
+  documento: {
+    type: documentoPessoaSchema,
+    required: true,
+  },
   status: {
     type: Boolean,
     default: true,
     required: true,
-  }
+  },
 });
 
 const Gestor = mongoose.model("Gestor", gestorSchema);
