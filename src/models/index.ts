@@ -56,6 +56,7 @@ export const documentoEmpresaSchema = new mongoose.Schema({
   cnpj: {
     type: String,
     max: 14,
+    unique: true,
     required: true,
   },
   telefone: {
@@ -78,6 +79,7 @@ export const documentoPessoaSchema = new mongoose.Schema({
   cpf: {
     type: String,
     max: 11,
+    unique: true,
     required: true,
   },
   rg: {
