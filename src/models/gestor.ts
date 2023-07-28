@@ -27,6 +27,11 @@ const gestorSchema = new mongoose.Schema({
     allowNull: true,
     default: null,
   },
+  status: {
+    type: Boolean,
+    default: true,
+    required: true,
+  }
 });
 
 const Gestor = mongoose.model("Gestor", gestorSchema);
