@@ -24,11 +24,13 @@ const barbeariaSchema = new mongoose.Schema({
     type: String,
     allowNull: true,
     default: null,
+    required: true,
   },
   slogan: {
     type: String,
     allowNull: true,
     default: null,
+    required: true,
   },
   expediente: {
     type: [expedienteSchema],
@@ -38,6 +40,7 @@ const barbeariaSchema = new mongoose.Schema({
     type: documentoEmpresaSchema,
     allowNull: true,
     default: null,
+    required: true,
   },
   status: {
     type: Boolean,
