@@ -6,6 +6,7 @@ import clienteRouter from "./cliente";
 import gestorRouter from "./gestor";
 import servicoRouter from "./servico";
 import usuarioRouter from "./usuario";
+import b2bappsRouter from "./b2bapps";
 
 const router = Router();
 
@@ -20,5 +21,8 @@ router.use("/cliente", Autenticacao, clienteRouter);
 router.use("/gestor", Autenticacao, gestorRouter);
 router.use("/servico", Autenticacao, servicoRouter);
 router.use("/usuario", Autenticacao, usuarioRouter);
+
+//Rotas Privadas para B2B
+router.use("/b2bapps", Autenticacao, b2bappsRouter);
 
 export default router;
