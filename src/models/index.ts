@@ -85,6 +85,7 @@ export const documentoPessoaSchema = new mongoose.Schema({
   rg: {
     type: String,
     allowNull: true,
+    unique: true,
   },
   dataNascimento: {
     type: Date,
