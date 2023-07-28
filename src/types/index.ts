@@ -1,3 +1,9 @@
+export enum PlanosEnum {
+  Barber = "Barber",
+  BarberPlus = "Barber_Plus",
+  BarberPro = "Barber_Pro",
+}
+
 export enum StatusAgendamentoEnum {
   Confirmado = "Confirmado",
   Cancelado = "Cancelado",
@@ -55,6 +61,7 @@ export interface GestorType {
 export interface BarbeariaType {
   _id: string;
   _id_gestor: string;
+  plano: PlanosEnum;
   nome: string;
   endereco: EnderecoType;
   logo: string | null;
