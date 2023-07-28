@@ -56,6 +56,7 @@ export interface GestorType {
   email: string | null;
   avatar: string | null;
   documento: DocumentoPessoaType;
+  status: boolean;
 }
 
 export interface BarbeariaType {
@@ -68,6 +69,7 @@ export interface BarbeariaType {
   slogan: string | null;
   expediente: ExpedienteType[];
   documento: DocumentoEmpresaType | null;
+  status: boolean;
 }
 
 export interface ServicoType {
