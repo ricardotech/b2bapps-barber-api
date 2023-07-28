@@ -7,20 +7,23 @@ export async function getAllGestores(req: Request, res: Response) {
     return res.status(200).json(gestores);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "Erro interno do servidor" });
+    return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
 }
 
 export async function getGestorByCpf(req: Request, res: Response) {
   try {
     const { cpf } = req.params;
-    const gestor = await Gestor.findOne({ "documento.cpf": cpf });
+    if (cpf.length !== 11 || isNaN(Number(cpf))) {
+      return res.status(400).json({ mensagem: "CPF inválido" });
+    }
+    const gestor = await Gestor.find({ "documento.cpf": cpf });
     if (!gestor) {
-      return res.status(404).json({ message: "Gestor não encontrado" });
+      return res.status(404).json({ mensagem: "Gestor não encontrado" });
     }
     return res.status(200).json(gestor);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "Erro interno do servidor" });
+    return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
 }

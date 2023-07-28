@@ -1,14 +1,10 @@
 import { Request, Response } from "express";
 import Gestor from "../../models/gestor";
 import Barbearia from "../../models/barbearia";
-import { Types } from "mongoose";
 
 export async function getGestorById(req: Request, res: Response) {
   try {
     const { id } = req.params;
-    if (Types.ObjectId.isValid(id) === false) {
-      return res.status(400).json({ mensagem: "Id inválido" });
-    }
     const gestor = await Gestor.findById(id);
     if (!gestor) {
       return res.status(404).json({ mensagem: "Gestor não encontrado" });
