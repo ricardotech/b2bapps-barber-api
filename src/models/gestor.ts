@@ -13,10 +13,12 @@ const gestorSchema = new mongoose.Schema({
   },
   telefone: {
     type: String,
+    max: 11,
     required: true,
   },
   email: {
     type: String,
+    max: 320,
     unique: true,
     required: true,
   },
