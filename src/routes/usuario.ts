@@ -1,4 +1,4 @@
-import express from "express";
+import { Router } from "express";
 
 import {
   getUsuario,
@@ -8,12 +8,12 @@ import {
   deleteUsuario,
 } from "../controllers/usuarios";
 
-const router = express.Router();
+const usuarioRouter = Router();
 
-router.get("/:id", getUsuario);
-router.get("/barbearia/:id", getUsuariosByBarbearia);
-router.post("/", createUsuario);
-router.put("/:id", updateUsuario);
-router.delete("/:id", deleteUsuario);
+usuarioRouter.get("/:id", getUsuario);
+usuarioRouter.get("/barbearia/:id", getUsuariosByBarbearia);
+usuarioRouter.post("/", createUsuario);
+usuarioRouter.put("/:id", updateUsuario);
+usuarioRouter.delete("/:id", deleteUsuario);
 
-export default router;
+export default usuarioRouter;

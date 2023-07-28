@@ -1,4 +1,4 @@
-import express from "express";
+import { Router } from "express";
 
 import {
   getServicosByBarbearia,
@@ -8,12 +8,12 @@ import {
   deleteServico,
 } from "../controllers/servicos";
 
-const router = express.Router();
+const servicoRouter = Router();
 
-router.get("/barbearia/:id", getServicosByBarbearia);
-router.get("/:id", getServico);
-router.post("/", createServico);
-router.put("/:id", updateServico);
-router.delete("/:id", deleteServico);
+servicoRouter.get("/barbearia/:id", getServicosByBarbearia);
+servicoRouter.get("/:id", getServico);
+servicoRouter.post("/", createServico);
+servicoRouter.put("/:id", updateServico);
+servicoRouter.delete("/:id", deleteServico);
 
-export default router;
+export default servicoRouter;

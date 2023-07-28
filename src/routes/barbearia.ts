@@ -1,4 +1,4 @@
-import express from "express";
+import { Router } from "express";
 
 import {
   createBarbearia,
@@ -8,15 +8,15 @@ import {
   updateBarbearia,
 } from "../controllers/barbearia";
 
-const router = express.Router();
+const barbeariaRouter = Router();
 
 // Rotas privadas [Interna]
-router.get("/", getBarbearias);
+barbeariaRouter.get("/", getBarbearias);
 
 // Rotas publicas
-router.get("/:id", getBarbearia);
-router.post("/", createBarbearia);
-router.put("/:id", updateBarbearia);
-router.delete("/:id", deleteBarbearia);
+barbeariaRouter.get("/:id", getBarbearia);
+barbeariaRouter.post("/", createBarbearia);
+barbeariaRouter.put("/:id", updateBarbearia);
+barbeariaRouter.delete("/:id", deleteBarbearia);
 
-export default router;
+export default barbeariaRouter;

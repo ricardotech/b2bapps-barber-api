@@ -1,4 +1,4 @@
-import express from "express";
+import { Router } from "express";
 
 import {
   getAgendamentosByBarbearia,
@@ -11,15 +11,15 @@ import {
   deletarAgendamento,
 } from "../controllers/agendamento";
 
-const router = express.Router();
+const agendamentoRouter = Router();
 
-router.get("/:id", getAgendamento);
-router.get("/barbearia/:id", getAgendamentosByBarbearia);
-router.get("/barbeiro/:id", getAgendamentosByBarbeiro);
-router.get("/usuario/:id", getAgendamentosByUsuario);
-router.post("/", createAgendamento);
-router.put("/:id", updateAgendamento);
-router.patch("/:id", cancelarAgendamento);
-router.delete("/:id", deletarAgendamento);
+agendamentoRouter.get("/:id", getAgendamento);
+agendamentoRouter.get("/barbearia/:id", getAgendamentosByBarbearia);
+agendamentoRouter.get("/barbeiro/:id", getAgendamentosByBarbeiro);
+agendamentoRouter.get("/usuario/:id", getAgendamentosByUsuario);
+agendamentoRouter.post("/", createAgendamento);
+agendamentoRouter.put("/:id", updateAgendamento);
+agendamentoRouter.patch("/:id", cancelarAgendamento);
+agendamentoRouter.delete("/:id", deletarAgendamento);
 
-export default router;
+export default agendamentoRouter;

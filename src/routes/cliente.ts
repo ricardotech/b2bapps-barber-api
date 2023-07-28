@@ -1,4 +1,4 @@
-import express from "express";
+import { Router } from "express";
 
 import {
   getCliente,
@@ -8,12 +8,12 @@ import {
   deletarCliente,
 } from "../controllers/clientes";
 
-const router = express.Router();
+const clienteRouter = Router();
 
-router.get("/:id", getCliente);
-router.get("/barbearia/:id", getClientesByBarbearia);
-router.post("/", createCliente);
-router.put("/:id", updateCliente);
-router.delete("/:id", deletarCliente);
+clienteRouter.get("/:id", getCliente);
+clienteRouter.get("/barbearia/:id", getClientesByBarbearia);
+clienteRouter.post("/", createCliente);
+clienteRouter.put("/:id", updateCliente);
+clienteRouter.delete("/:id", deletarCliente);
 
-export default router;
+export default clienteRouter;
