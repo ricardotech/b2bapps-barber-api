@@ -1,10 +1,9 @@
 import { Router } from "express";
 import {
   getAllGestores,
-  getBarberShopByGestor,
   getGestorByCpf,
-  getGestorById,
 } from "../../controllers/b2bapps/gestor/get";
+import { getBarberShopByGestor, getGestorById } from "../../utils/gestor/get";
 
 const b2b_gestorRouter = Router();
 
