@@ -1,22 +1,8 @@
 import { Router } from "express";
-
-import {
-  createBarbearia,
-  deleteBarbearia,
-  getBarbearia,
-  getBarbearias,
-  updateBarbearia,
-} from "../controllers/barbearia";
+import { getBarberShopById } from "../controllers/barbearia/get";
 
 const barbeariaRouter = Router();
 
-// Rotas privadas [Interna]
-barbeariaRouter.get("/", getBarbearias);
-
-// Rotas publicas
-barbeariaRouter.get("/:id", getBarbearia);
-barbeariaRouter.post("/", createBarbearia);
-barbeariaRouter.put("/:id", updateBarbearia);
-barbeariaRouter.delete("/:id", deleteBarbearia);
+barbeariaRouter.get("/:id", getBarberShopById);
 
 export default barbeariaRouter;
