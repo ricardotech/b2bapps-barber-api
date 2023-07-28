@@ -11,7 +11,7 @@ import b2bappsRouter from "./b2bapps";
 const router = Router();
 
 //Rota Pública
-router.use("/login");
+router.use("/login",()=>{});
 
 //Rotas Privadas
 router.use("/agendamento", Autenticacao, agendamentoRouter);

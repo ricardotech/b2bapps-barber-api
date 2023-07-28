@@ -1,12 +1,7 @@
 import { Request, Response } from "express";
 import Gestor from "../../../models/gestor";
 
-interface Prop {
-  req: Request;
-  res: Response;
-}
-
-export async function getAllGestores({ req, res }: Prop) {
+export async function getAllGestores(req: Request, res: Response) {
   try {
     const gestores = await Gestor.find();
     return res.status(200).json(gestores);
@@ -16,7 +11,7 @@ export async function getAllGestores({ req, res }: Prop) {
   }
 }
 
-export async function getGestorByCpf({ req, res }: Prop) {
+export async function getGestorByCpf(req: Request, res: Response) {
   try {
     const { cpf } = req.params;
     const gestor = await Gestor.findOne({ "documento.cpf": cpf });

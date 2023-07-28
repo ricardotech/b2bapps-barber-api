@@ -1,12 +1,7 @@
 import { Request, Response } from "express";
 import Barbearia from "../../models/barbearia";
 
-interface Prop {
-  req: Request;
-  res: Response;
-}
-
-export async function getBarberShopById({ req, res }: Prop) {
+export async function getBarberShopById(req: Request, res: Response) {
   try {
     const { id } = req.params;
     const barbearia = await Barbearia.findById(id);

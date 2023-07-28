@@ -2,12 +2,7 @@ import { Request, Response } from "express";
 import { GestorType } from "../../types";
 import Gestor from "../../models/gestor";
 
-interface Prop {
-  req: Request;
-  res: Response;
-}
-
-export async function createGestor({ req, res }: Prop) {
+export async function createGestor(req: Request, res: Response) {
   try {
     const body: GestorType = req.body;
     const { nome, telefone, email, documento } = body;

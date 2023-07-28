@@ -3,12 +3,7 @@ import Barbearia from "../../models/barbearia";
 import { BarbeariaType, PlanosEnum } from "../../types";
 import Gestor from "../../models/gestor";
 
-interface Prop {
-  req: Request;
-  res: Response;
-}
-
-export async function createBarberShop({ req, res }: Prop) {
+export async function createBarberShop(req: Request, res: Response) {
   try {
     const body: BarbeariaType = req.body;
     const {

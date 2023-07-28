@@ -2,12 +2,7 @@ import { Request, Response } from "express";
 import Gestor from "../../models/gestor";
 import Barbearia from "../../models/barbearia";
 
-interface Prop {
-  req: Request;
-  res: Response;
-}
-
-export async function deleteGestor({ req, res }: Prop) {
+export async function deleteGestor(req: Request, res: Response) {
   try {
     const { id } = req.params;
     const gestor = await Gestor.findById(id);
