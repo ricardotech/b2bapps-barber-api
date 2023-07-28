@@ -51,9 +51,8 @@ export interface DocumentoPessoaType {
 export interface GestorType {
   _id: string;
   nome: string;
-  cpf: string;
   telefone: string;
-  email: string | null;
+  email: string;
   avatar: string | null;
   documento: DocumentoPessoaType;
   status: boolean;
@@ -86,8 +85,8 @@ export interface BarbeiroType {
   _id_barbearia: string;
   nome: string;
   cpf: string;
-  email: string;
   telefone: string;
+  email: string | null;
   expediente: ExpedienteType[];
   avaliacoes: number[];
   avatar: string | null;
