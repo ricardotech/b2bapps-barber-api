@@ -1,124 +1,51 @@
-import mongoose, { Schema, Document, Types } from "mongoose";
+import mongoose, { Types } from "mongoose";
+import { PlanosEnum } from "../types";
+import { documentoEmpresa, enderecoSchema, expedienteSchema } from ".";
 
-interface Endereco {
-  cep: string;
-  rua: string;
-  numero: string;
-  bairro: string;
-  cidade: string;
-  estado: string;
-  complemento?: string;
-}
-
-interface DadosCNPJ {
-  nome_empresarial: string;
-  nome_fantasia: string;
-  cnpj: string;
-  telefone: string;
-  email: string;
-  data_abertura?: Date;
-  capital_social?: number;
-  inscricao_estadual?: string;
-}
-
-interface DadosCPF {
-  user: Types.ObjectId;
-  identidade?: string;
-  cpf?: string;
-  data_nascimento?: Date;
-  naturalidade?: string;
-  filiacao?: string;
-}
-
-interface Dados {
-  documento_tipo: "CNPJ" | "CPF";
-  dados_cnpj?: DadosCNPJ;
-  dados_cpf?: DadosCPF;
-}
-
-interface Avaliacao {
-  nota: number;
-  comentario?: string;
-  userId: Types.ObjectId;
-}
-
-interface BarbeariaModel extends Document {
-  nome: string;
-  criador: Types.ObjectId;
-  endereco: Endereco;
-  avaliacoes: Avaliacao[];
-  logo_uri?: string;
-  imagens_uri?: string[];
-  slogan?: string;
-  dados: Dados;
-  horario_abertura: Date;
-  horario_fechamento: Date;
-}
-
-const barbeariaSchema = new Schema<BarbeariaModel>({
+const barbeariaSchema = new mongoose.Schema({
+  _id_gestor: {
+    type: Types.ObjectId,
+    required: true,
+  },
+  plano: {
+    type: String,
+    enum: PlanosEnum,
+    required: true,
+  },
   nome: {
     type: String,
     required: true,
   },
-  criador: String,
   endereco: {
-    cep: String,
-    rua: String,
-    numero: String,
-    bairro: String,
-    cidade: String,
-    estado: String,
-    complemento: String,
-  },
-  avaliacoes: [
-    {
-      nota: Number,
-      comentario: String,
-      userId: Types.ObjectId,
-    },
-  ],
-  logo_uri: String,
-  imagens_uri: [String],
-  slogan: String,
-  dados: {
-    documento_tipo: {
-      enum: ["CNPJ", "CPF"],
-      type: String,
-      required: true,
-    },
-    dados_cnpj: {
-      nome_empresarial: String,
-      nome_fantasia: String,
-      cnpj: String,
-      capital_social: Number,
-      data_abertura: Date,
-      telefone: Number,
-      email: String,
-    },
-    dados_cpf: {
-      user: String,
-      identidade: {
-        type: String,
-      },
-      cpf: {
-        type: String,
-        max: 11,
-      },
-      data_nascimento: Date,
-      naturalidade: String,
-      filiacao: String,
-    },
-  },
-  horario_abertura: {
-    type: Date,
+    type: enderecoSchema,
     required: true,
   },
-  horario_fechamento: {
-    type: Date,
+  logo: {
+    type: String,
+    allowNull: true,
+    default: null,
+  },
+  slogan: {
+    type: String,
+    allowNull: true,
+    default: null,
+  },
+  expediente: {
+    type: [expedienteSchema],
+    required: true,
+  },
+  documento: {
+    type: documentoEmpresa,
+    allowNull: true,
+    default: null,
+  },
+  status: {
+    type: Boolean,
+    default: true,
     required: true,
   }
 });
 
-const Barbearia = mongoose.model<BarbeariaModel>("Barbearia", barbeariaSchema);
+const Barbearia = mongoose.model("Barbearia", barbeariaSchema);
 
 export default Barbearia;
