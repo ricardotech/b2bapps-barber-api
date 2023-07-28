@@ -6,12 +6,6 @@ const gestorSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  cpf: {
-    type: String,
-    max: 11,
-    unique: true,
-    required: true,
-  },
   telefone: {
     type: String,
     max: 11,
