@@ -1,6 +1,6 @@
 import mongoose, { Types } from "mongoose";
 import { PlanosEnum } from "../types";
-import { documentoEmpresa, enderecoSchema, expedienteSchema } from ".";
+import { documentoEmpresaSchema, enderecoSchema, expedienteSchema } from ".";
 
 const barbeariaSchema = new mongoose.Schema({
   _id_gestor: {
@@ -35,7 +35,7 @@ const barbeariaSchema = new mongoose.Schema({
     required: true,
   },
   documento: {
-    type: documentoEmpresa,
+    type: documentoEmpresaSchema,
     allowNull: true,
     default: null,
   },
