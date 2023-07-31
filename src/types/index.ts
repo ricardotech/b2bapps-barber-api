@@ -11,14 +11,14 @@ export enum StatusAgendamentoEnum {
 }
 
 export enum TipoUsuarioEnum {
-    Gestor = "gestor",
-    Barbeario = "barbeiro",
+  Gestor = "gestor",
+  Barbeario = "barbeiro",
 }
 
 export interface ExpedienteType {
-  diaSemana: number; // 0 = Domingo, 1 = Segunda, ..., 6 = Sábado
-  horarioInicio: Date; // Date com apenas hora e minuto
-  horarioFim: Date; // Date com apenas hora e minuto
+  dia: number;
+  horarioInicio: Date;
+  horarioFim: Date;
 }
 
 export interface EnderecoType {
@@ -28,7 +28,14 @@ export interface EnderecoType {
   bairro: string;
   cidade: string;
   estado: string;
-  complemento: string;
+}
+
+export interface ContatoType {
+  telefone: string;
+  email: string;
+  instagram: string | null;
+  facebook: string | null;
+  whatsapp: string | null;
 }
 
 export interface DocumentoEmpresaType {
@@ -68,6 +75,8 @@ export interface BarbeariaType {
   slogan: string | null;
   expediente: ExpedienteType[];
   documento: DocumentoEmpresaType | null;
+  sobre: string;
+  contato: ContatoType;
   status: boolean;
 }
 
@@ -94,28 +103,28 @@ export interface BarbeiroType {
 }
 
 export interface UsuarioType {
-    tipo: TipoUsuarioEnum;
-    cpf: string;
-    password: string;
+  tipo: TipoUsuarioEnum;
+  cpf: string;
+  password: string;
 }
 
 export interface ClienteType {
-    _id: string;
-    _id_barbearia: string;
-    nome: string;
-    telefone: string;
-    email: string | null;
-    avatar: string | null;
+  _id: string;
+  _id_barbearia: string;
+  nome: string;
+  telefone: string;
+  email: string | null;
+  avatar: string | null;
 }
 
 export interface AgendamentoType {
-    _id: string;
-    _id_barbearia: string;
-    _id_cliente: string;
-    _id_barbeiro: string;
-    servicos: string[];
-    avaliacao: number | null;
-    inicio: Date;
-    fim: Date;
-    status: StatusAgendamentoEnum;
+  _id: string;
+  _id_barbearia: string;
+  _id_cliente: string;
+  _id_barbeiro: string;
+  servicos: string[];
+  avaliacao: number | null;
+  inicio: Date;
+  fim: Date;
+  status: StatusAgendamentoEnum;
 }
