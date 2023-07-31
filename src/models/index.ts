@@ -1,5 +1,31 @@
 import mongoose from "mongoose";
 
+export const contatoSchema = new mongoose.Schema({
+  telefone: {
+    type: String,
+    max: 11,
+    required: true,
+  },
+  email: {
+    type: String,
+    max: 320,
+    required: true,
+  },
+  whatsapp: {
+    type: String,
+    max: 11,
+    default: null,
+  },
+  facebook: {
+    type: String,
+    default: null,
+  },
+  instagram: {
+    type: String,
+    default: null,
+  },
+});
+
 export const enderecoSchema = new mongoose.Schema({
   cep: {
     type: String,
@@ -84,12 +110,12 @@ export const documentoPessoaSchema = new mongoose.Schema({
   },
   rg: {
     type: String,
-    allowNull: true,
     unique: true,
+    default: null,
   },
   dataNascimento: {
     type: Date,
-    allowNull: true,
+    default: null,
   },
   naturalidade: {
     type: String,
