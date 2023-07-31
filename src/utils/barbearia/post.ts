@@ -1,51 +1,56 @@
 import { Request, Response } from "express";
-import { BarbeariaType, PlanosEnum } from "../../types";
+import { PlanosEnum } from "../../types";
 import Gestor from "../../models/gestor";
 import Barbearia from "../../models/barbearia";
 
 export async function createBarberShop(req: Request, res: Response) {
   try {
-    const body: BarbeariaType = req.body;
     const {
       _id_gestor,
       plano,
       nome,
+      nomeFantasia,
+      documento,
       endereco,
       logo,
       slogan,
       expediente,
-      documento,
       sobre,
       contato,
-    } = body;
+    } = req.body;
 
     if (
       !_id_gestor ||
       !plano ||
       !nome ||
+      !nomeFantasia ||
+      !documento ||
       !endereco ||
       !expediente ||
       !sobre ||
       !contato
     ) {
-      return res
-        .status(400)
-        .json({ mensagem: "Dados obrigatórios não informados" });
+      return res.status(400).json({ mensagem: "Dados insuficientes" });
     }
 
     const gestor = await Gestor.findById(_id_gestor);
     if (!gestor) {
-      return res.status(400).json({ mensagem: "Gestor não encontrado" });
+      return res.status(404).json({ mensagem: "Gestor não encontrado" });
     }
-    if (gestor.status === false) {
+
+    if(!gestor.status){
       return res.status(400).json({ mensagem: "Gestor inativo" });
     }
+
     if (
       plano !== PlanosEnum.Barber &&
       plano !== PlanosEnum.BarberPlus &&
       plano !== PlanosEnum.BarberPro
     ) {
       return res.status(400).json({ mensagem: "Plano inválido" });
+    }
+    if (documento.length !== 14 && documento.length !== 11) {
+      return res.status(400).json({ mensagem: "Documento inválido" });
     }
     if (
       endereco.cep.length !== 8 ||
@@ -61,9 +66,6 @@ export async function createBarberShop(req: Request, res: Response) {
     if (expediente.length === 0 || expediente.length >= 7) {
       return res.status(400).json({ mensagem: "Expediente inválido" });
     }
-    if (sobre.length > 500) {
-      return res.status(400).json({ mensagem: "Sobre inválido" });
-    }
     if (!contato.telefone || !contato.email) {
       return res.status(400).json({ mensagem: "Contato inválido" });
     }
@@ -73,29 +75,31 @@ export async function createBarberShop(req: Request, res: Response) {
     if (!contato.email.includes("@") || !contato.email.includes(".com")) {
       return res.status(400).json({ mensagem: "Email inválido" });
     }
+    if (sobre.length > 500) {
+      return res
+        .status(400)
+        .json({ mensagem: "Sobre deve ter no máximo 500 caracteres" });
+    }
     await Barbearia.create({
       _id_gestor,
       plano,
       nome,
+      nomeFantasia,
+      documento,
       endereco,
       logo,
       slogan,
       expediente,
-      documento,
       sobre,
       contato,
-    })
-      .then((barbearia) => {
-        return res
-          .status(201)
-          .json({ mensagem: `Barbearia ${barbearia.nome} criada com sucesso` });
-      })
-      .catch((error) => {
+    }).then(()=>{
+      return res.status(201).json({ mensagem: "Barbearia criada com sucesso" });
+    }).catch((error) => {
+      if (error.code === 11000) {
         console.log(error);
-        return res
-          .status(500)
-          .json({ mensagem: `Erro ao cadastrar a barbearia` });
-      });
+        return res.status(400).json({ mensagem: "Documento já cadastrado" });
+      }
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ mensagem: "Erro interno do servidor" });
