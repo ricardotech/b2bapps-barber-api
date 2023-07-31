@@ -2,7 +2,6 @@ import mongoose, { Types } from "mongoose";
 import { PlanosEnum } from "../types";
 import {
   contatoSchema,
-  documentoEmpresaSchema,
   enderecoSchema,
   expedienteSchema,
 } from ".";
@@ -21,6 +20,15 @@ const barbeariaSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  nomeFantasia: {
+    type: String,
+    required: true,
+  },
+  documento: {
+    type: String,
+    unique: true,
+    required: true,
+  },
   endereco: {
     type: enderecoSchema,
     required: true,
@@ -36,10 +44,6 @@ const barbeariaSchema = new mongoose.Schema({
   expediente: {
     type: [expedienteSchema],
     required: true,
-  },
-  documento: {
-    type: documentoEmpresaSchema,
-    default: null,
   },
   sobre: {
     type: String,
