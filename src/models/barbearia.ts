@@ -1,6 +1,11 @@
 import mongoose, { Types } from "mongoose";
 import { PlanosEnum } from "../types";
-import { documentoEmpresaSchema, enderecoSchema, expedienteSchema } from ".";
+import {
+  contatoSchema,
+  documentoEmpresaSchema,
+  enderecoSchema,
+  expedienteSchema,
+} from ".";
 
 const barbeariaSchema = new mongoose.Schema({
   _id_gestor: {
@@ -22,15 +27,11 @@ const barbeariaSchema = new mongoose.Schema({
   },
   logo: {
     type: String,
-    allowNull: true,
     default: null,
-    required: true,
   },
   slogan: {
     type: String,
-    allowNull: true,
     default: null,
-    required: true,
   },
   expediente: {
     type: [expedienteSchema],
@@ -38,15 +39,22 @@ const barbeariaSchema = new mongoose.Schema({
   },
   documento: {
     type: documentoEmpresaSchema,
-    allowNull: true,
     default: null,
+  },
+  sobre: {
+    type: String,
+    max: 500,
+    required: true,
+  },
+  contato: {
+    type: contatoSchema,
     required: true,
   },
   status: {
     type: Boolean,
     default: true,
     required: true,
-  }
+  },
 });
 
 const Barbearia = mongoose.model("Barbearia", barbeariaSchema);
