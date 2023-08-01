@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import Gestor from "../../../models/gestor";
-import { GestorMock } from "./data";
+import { BarbeariaMock, GestorMock } from "./data";
+import Barbearia from "../../../models/barbearia";
 
 export async function popularGestor(req: Request, res: Response) {
   try {
@@ -11,7 +12,15 @@ export async function popularGestor(req: Request, res: Response) {
     return res.status(500).json({ error });
   }
 }
-export async function popularBarbearia(req: Request, res: Response) {}
+export async function popularBarbearia(req: Request, res: Response) {
+    try {
+        await Barbearia.insertMany(BarbeariaMock).then((result) => {
+          res.status(201).json({ mensagem: "Barbearia populada com sucesso", result });
+        });
+      } catch (error) {
+        return res.status(500).json({ error });
+      }
+}
 export async function popularServico(req: Request, res: Response) {}
 export async function popularBarbeiro(req: Request, res: Response) {}
 export async function popularCliente(req: Request, res: Response) {}
