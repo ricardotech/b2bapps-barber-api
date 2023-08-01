@@ -1,26 +1,34 @@
-import mongoose, { Schema, Document, Types } from "mongoose";
+import mongoose, { Types } from "mongoose";
 
-interface ServicoModel extends Document {
-  nome: string;
-  descricao?: string;
-  imagens?: string[];
-  barbearia: Types.ObjectId;
-  preco: number;
-  duracao_minutos: number;
-}
-
-const servicoSchema = new Schema<ServicoModel>({
+const servicoSchema = new mongoose.Schema({
+  idBarbearia: {
+    type: Types.ObjectId,
+    ref: "Barbearia",
+    required: true,
+  },
   nome: {
     type: String,
     required: true,
   },
-  descricao: String,
-  imagens: [String],
-  barbearia: Types.ObjectId,
-  preco: Number,
-  duracao_minutos: Number,
+  imagem: {
+    type: String,
+    default: null,
+  },
+  preco: {
+    type: Number,
+    required: true,
+  },
+  duracaoMinutos: {
+    type: Number,
+    required: true,
+  },
+  status: {
+    type: Boolean,
+    default: true,
+    required: true,
+  },
 });
 
-const Servico = mongoose.model<ServicoModel>("Servico", servicoSchema);
+const Servico = mongoose.model("Servico", servicoSchema);
 
 export default Servico;
