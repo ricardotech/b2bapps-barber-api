@@ -1,34 +1,47 @@
-import mongoose, { Schema, Document, Types } from "mongoose";
+import mongoose, { Types } from "mongoose";
+import { StatusAgendamentoEnum } from "../types";
 
-interface AgendamentoModel extends Document {
-  usuario: Types.ObjectId;
-  barbeiro: Types.ObjectId;
-  barbearia: Types.ObjectId;
-  criador: Types.ObjectId;
-  servicos: Types.ObjectId[];
-  inicio: Date;
-  status: "Confirmado" | "Cancelado" | "Realizado";
-  fim: Date;
-}
-
-const agendamentoSchema = new Schema<AgendamentoModel>({
-  usuario: Types.ObjectId,
-  barbeiro: Types.ObjectId,
-  barbearia: Types.ObjectId,
-  criador: Types.ObjectId,
-  servicos: [Types.ObjectId],
-  inicio: Date,
-  fim: Date,
+const agendamentoSchema = new mongoose.Schema({
+  _id_barbearia: {
+    type: Types.ObjectId,
+    ref: "Barbearia",
+    required: true
+  },
+  _id_cliente: {
+    type: Types.ObjectId,
+    ref: "Cliente",
+    required: true
+  },
+  _id_barbeiro: {
+    type: Types.ObjectId,
+    ref: "Barbeiro",
+    required: true
+  },
+  servicos: [{
+    type: Types.ObjectId,
+    ref: "Servico",
+    required: true
+  }],
+  avaliacao: {
+    type: Number,
+    default: null
+  },
+  inicio: {
+    type: Date,
+    required: true
+  },
+  fim: {
+    type: Date,
+    required: true
+  },
   status: {
     type: String,
-    enum: ["Confirmado", "Cancelado", "Realizado"],
-    default: "Confirmado"
+    enum: StatusAgendamentoEnum,
+    default: StatusAgendamentoEnum.Confirmado,
+    required: true
   }
 });
 
-const Agendamento = mongoose.model<AgendamentoModel>(
-  "Agendamento",
-  agendamentoSchema
-);
+const Agendamento = mongoose.model("Agendamento", agendamentoSchema);
 
 export default Agendamento;

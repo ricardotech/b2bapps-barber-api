@@ -2,7 +2,7 @@ import mongoose, { Types } from "mongoose";
 import { expedienteSchema } from ".";
 
 const barbeiroSchema = new mongoose.Schema({
-  _id_barbearia: {
+  idBarbearia: {
     type: Types.ObjectId,
     ref: "Barbearia",
     required: true,

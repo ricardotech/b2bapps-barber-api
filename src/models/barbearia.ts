@@ -7,8 +7,9 @@ import {
 } from ".";
 
 const barbeariaSchema = new mongoose.Schema({
-  _id_gestor: {
+  idGestor: {
     type: Types.ObjectId,
+    ref: "Gestor",
     required: true,
   },
   plano: {

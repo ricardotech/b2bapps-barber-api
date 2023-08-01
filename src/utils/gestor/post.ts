@@ -28,14 +28,14 @@ export async function createGestor(req: Request, res: Response) {
         return res.status(201).json(gestor);
       })
       .catch((error) => {
-        if(error.code === 11000){
-          if(error.keyValue.email){
+        if (error.code === 11000) {
+          if (error.keyValue.email) {
             return res.status(400).json({ message: "Email já cadastrado" });
           }
-          if(error.keyValue["documento.cpf"]){
+          if (error.keyValue["documento.cpf"]) {
             return res.status(400).json({ message: "CPF já cadastrado" });
           }
-          if(error.keyValue["documento.rg"]){
+          if (error.keyValue["documento.rg"]) {
             return res.status(400).json({ message: "RG já cadastrado" });
           }
         }

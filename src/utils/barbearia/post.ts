@@ -6,7 +6,7 @@ import Barbearia from "../../models/barbearia";
 export async function createBarberShop(req: Request, res: Response) {
   try {
     const {
-      _id_gestor,
+      idGestor,
       plano,
       nome,
       nomeFantasia,
@@ -20,7 +20,7 @@ export async function createBarberShop(req: Request, res: Response) {
     } = req.body;
 
     if (
-      !_id_gestor ||
+      !idGestor ||
       !plano ||
       !nome ||
       !nomeFantasia ||
@@ -33,7 +33,7 @@ export async function createBarberShop(req: Request, res: Response) {
       return res.status(400).json({ mensagem: "Dados insuficientes" });
     }
 
-    const gestor = await Gestor.findById(_id_gestor);
+    const gestor = await Gestor.findById(idGestor);
     if (!gestor) {
       return res.status(404).json({ mensagem: "Gestor não encontrado" });
     }
@@ -81,7 +81,7 @@ export async function createBarberShop(req: Request, res: Response) {
         .json({ mensagem: "Sobre deve ter no máximo 500 caracteres" });
     }
     await Barbearia.create({
-      _id_gestor,
+      idGestor,
       plano,
       nome,
       nomeFantasia,

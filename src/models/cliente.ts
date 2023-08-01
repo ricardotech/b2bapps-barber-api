@@ -1,6 +1,11 @@
 import mongoose, { Types } from "mongoose";
 
 const clienteSchema = new mongoose.Schema({
+  idBarbearia: {
+    type: Types.ObjectId,
+    ref: "Barbearia",
+    required: true,
+  },
   nome: {
     type: String,
     required: true,
@@ -19,12 +24,7 @@ const clienteSchema = new mongoose.Schema({
   avatar: {
     type: String,
     default: null
-  },
-  barbearia: {
-    type: Types.ObjectId,
-    ref: "Barbearia",
-    required: true,
-  },
+  }
 });
 
 const Cliente = mongoose.model("Cliente", clienteSchema);

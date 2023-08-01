@@ -5,7 +5,7 @@ import Barbearia from "../../models/barbearia";
 export async function createBarber(req: Request, res: Response) {
   try {
     const {
-      _id_barbearia,
+      idBarbearia,
       nome,
       documento,
       avatar,
@@ -15,7 +15,7 @@ export async function createBarber(req: Request, res: Response) {
       expediente,
     } = req.body;
     if (
-      !_id_barbearia ||
+      !idBarbearia ||
       !nome ||
       !documento ||
       !email ||
@@ -25,7 +25,7 @@ export async function createBarber(req: Request, res: Response) {
     ) {
       return res.status(400).json({ mensagem: "Dados insuficientes" });
     }
-    const barbearia = await Barbearia.findById(_id_barbearia);
+    const barbearia = await Barbearia.findById(idBarbearia);
     if (!barbearia) {
         return res.status(400).json({ mensagem: "Barbearia não encontrada" });
     }
@@ -56,7 +56,7 @@ export async function createBarber(req: Request, res: Response) {
       });
     }
     await Barbeiro.create({
-      _id_barbearia,
+      idBarbearia,
       nome,
       documento,
       avatar,

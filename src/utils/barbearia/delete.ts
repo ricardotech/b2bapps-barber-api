@@ -4,7 +4,7 @@ import Barbearia from "../../models/barbearia";
 export async function deleteBarbearia(req: Request, res: Response) {
   try {
     const { id } = req.params;
-    const { _id_gestor } = req.body;
+    const { idGestor } = req.body;
     const barbearia = await Barbearia.findById(id);
     if (!barbearia) {
       return res.status(404).json({ mensagem: "Barbearia não encontrada" });
@@ -12,7 +12,7 @@ export async function deleteBarbearia(req: Request, res: Response) {
     if (barbearia.status) {
       return res.status(400).json({ mensagem: "Barbearia ainda está ativada" });
     }
-    if (barbearia._id_gestor.toString() !== _id_gestor) {
+    if (barbearia.idGestor.toString() !== idGestor) {
       return res
         .status(400)
         .json({ mensagem: "Usuário não é gestor da barbearia" });
