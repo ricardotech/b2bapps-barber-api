@@ -96,16 +96,16 @@ export interface ServicoType {
 }
 
 export interface BarbeiroType {
-  _id: string;
-  _id_barbearia: string;
+  _id?: string;
+  idBarbearia: string;
   nome: string;
-  cpf: string;
-  telefone: string;
-  email: string | null;
-  expediente: ExpedienteType[];
-  avaliacoes: number[];
+  documento: string;
   avatar: string | null;
+  email: string;
+  telefone: string;
   servicos: string[];
+  expediente: ExpedienteType[];
+  status?: boolean;
 }
 
 export interface UsuarioType {
