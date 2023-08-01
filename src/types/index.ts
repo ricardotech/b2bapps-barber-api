@@ -86,12 +86,13 @@ export interface BarbeariaType {
 }
 
 export interface ServicoType {
-  _id: string;
-  _id_barbearia: string;
+  _id?: string;
+  idBarbearia: string;
   nome: string;
-  preco: number;
   imagem: string | null;
-  duracao_minutos: number;
+  preco: number;
+  duracaoMinutos: number;
+  status?: boolean;
 }
 
 export interface BarbeiroType {
