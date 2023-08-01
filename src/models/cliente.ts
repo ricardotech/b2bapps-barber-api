@@ -1,38 +1,32 @@
-import mongoose, {
-  Schema,
-  Document,
-  Types,
-  ObjectIdSchemaDefinition,
-} from "mongoose";
+import mongoose, { Types } from "mongoose";
 
-interface ClienteModel extends Document {
-  barbearia: ObjectIdSchemaDefinition;
-  nome: string;
-  telefone: string;
-  email?: string;
-  avatar?: string;
-}
-
-const clienteSchema = new Schema<ClienteModel>({
+const clienteSchema = new mongoose.Schema({
   nome: {
     type: String,
     required: true,
   },
   telefone: {
     type: String,
+    unique: true,
+    max: 11,
     required: true,
   },
   email: {
     type: String,
-    unique: true,
+    max: 320,
+    default: null,
   },
-  avatar: String,
+  avatar: {
+    type: String,
+    default: null
+  },
   barbearia: {
     type: Types.ObjectId,
+    ref: "Barbearia",
     required: true,
   },
 });
 
-const Cliente = mongoose.model<ClienteModel>("Cliente", clienteSchema);
+const Cliente = mongoose.model("Cliente", clienteSchema);
 
 export default Cliente;
