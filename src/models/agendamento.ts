@@ -2,17 +2,17 @@ import mongoose, { Types } from "mongoose";
 import { StatusAgendamentoEnum } from "../types";
 
 const agendamentoSchema = new mongoose.Schema({
-  _id_barbearia: {
+  idBarbearia: {
     type: Types.ObjectId,
     ref: "Barbearia",
     required: true
   },
-  _id_cliente: {
+  idCliente: {
     type: Types.ObjectId,
     ref: "Cliente",
     required: true
   },
-  _id_barbeiro: {
+  idBarbeiro: {
     type: Types.ObjectId,
     ref: "Barbeiro",
     required: true
