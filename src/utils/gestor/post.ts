@@ -5,8 +5,18 @@ import Gestor from "../../models/gestor";
 export async function createGestor(req: Request, res: Response) {
   try {
     const body: GestorType = req.body;
-    const { nome, telefone, email, documento } = body;
-    if (!nome || !telefone || !email || !documento) {
+    const {
+      nome,
+      telefone,
+      email,
+      cpf,
+      avatar,
+      rg,
+      dataNascimento,
+      naturalidade,
+      filiacao,
+    } = body;
+    if (!nome || !telefone || !email || !cpf || !naturalidade || !filiacao) {
       return res
         .status(400)
         .json({ message: "Dados obrigatórios não informados" });
@@ -17,13 +27,23 @@ export async function createGestor(req: Request, res: Response) {
     if (!email.includes("@") || !email.includes(".com") || email.length > 320) {
       return res.status(400).json({ message: "Email inválido" });
     }
-    if (!documento.cpf || !documento.naturalidade || !documento.filiacao) {
-      return res.status(400).json({ message: "Documento inválido" });
-    }
-    if (documento.cpf.length !== 11) {
+    if (cpf.length !== 11) {
       return res.status(400).json({ message: "CPF inválido" });
     }
-    await Gestor.create(body)
+    if(!(dataNascimento instanceof Date) && dataNascimento !== null) {
+      return res.status(400).json({ message: "Data de nascimento inválida" });
+    }
+    await Gestor.create({
+      nome,
+      telefone,
+      email,
+      cpf,
+      avatar,
+      rg,
+      dataNascimento,
+      naturalidade,
+      filiacao,
+    })
       .then((gestor) => {
         return res.status(201).json(gestor);
       })
@@ -32,10 +52,10 @@ export async function createGestor(req: Request, res: Response) {
           if (error.keyValue.email) {
             return res.status(400).json({ message: "Email já cadastrado" });
           }
-          if (error.keyValue["documento.cpf"]) {
+          if (error.keyValue.cpf) {
             return res.status(400).json({ message: "CPF já cadastrado" });
           }
-          if (error.keyValue["documento.rg"]) {
+          if (error.keyValue.rg) {
             return res.status(400).json({ message: "RG já cadastrado" });
           }
         }

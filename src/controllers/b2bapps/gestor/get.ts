@@ -17,7 +17,7 @@ export async function getGestorByCpf(req: Request, res: Response) {
     if (cpf.length !== 11 || isNaN(Number(cpf))) {
       return res.status(400).json({ mensagem: "CPF inválido" });
     }
-    const gestor = await Gestor.find({ "documento.cpf": cpf });
+    const gestor = await Gestor.find({ cpf });
     if (!gestor) {
       return res.status(404).json({ mensagem: "Gestor não encontrado" });
     }

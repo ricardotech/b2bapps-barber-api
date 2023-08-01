@@ -26,7 +26,7 @@ export async function getBarberShopByGestor(req: Request, res: Response) {
       return res.status(404).json({ mensagem: "Gestor não encontrado" });
     }
 
-    const barbearia = await Barbearia.find({ _id_gestor: gestor._id });
+    const barbearia = await Barbearia.find({ idGestor: gestor._id });
     return res.status(200).json(barbearia);
   } catch (error) {
     console.error(error);

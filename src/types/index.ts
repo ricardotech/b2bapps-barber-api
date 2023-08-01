@@ -10,11 +10,6 @@ export enum StatusAgendamentoEnum {
   Realizado = "Realizado",
 }
 
-export enum TipoUsuarioEnum {
-  Gestor = "gestor",
-  Barbeario = "barbeiro",
-}
-
 export interface ExpedienteType {
   dia: number;
   horarioInicio: Date;
@@ -36,23 +31,6 @@ export interface ContatoType {
   instagram: string | null;
   facebook: string | null;
   whatsapp: string | null;
-}
-
-export interface DocumentoEmpresaType {
-  razaoSocial: string;
-  nomeFantasia: string;
-  cnpj: string;
-  telefone: string;
-  email: string;
-  dataAbertura: Date;
-}
-
-export interface DocumentoPessoaType {
-  cpf: string;
-  rg: string | null;
-  dataNascimento: Date | null;
-  naturalidade: string;
-  filiacao: string;
 }
 
 export interface GestorType {
@@ -106,12 +84,6 @@ export interface BarbeiroType {
   servicos: string[];
   expediente: ExpedienteType[];
   status?: boolean;
-}
-
-export interface UsuarioType {
-  tipo: TipoUsuarioEnum;
-  cpf: string;
-  password: string;
 }
 
 export interface ClienteType {
