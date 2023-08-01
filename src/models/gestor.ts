@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import { documentoPessoaSchema } from ".";
+import { GestorType } from "../types";
 
-const gestorSchema = new mongoose.Schema({
+const gestorSchema = new mongoose.Schema<GestorType>({
   nome: {
     type: String,
     required: true,
@@ -9,6 +9,7 @@ const gestorSchema = new mongoose.Schema({
   telefone: {
     type: String,
     max: 11,
+    unique: true,
     required: true,
   },
   email: {
@@ -22,8 +23,26 @@ const gestorSchema = new mongoose.Schema({
     allowNull: true,
     default: null,
   },
-  documento: {
-    type: documentoPessoaSchema,
+  cpf: {
+    type: String,
+    max: 11,
+    unique: true,
+    required: true,
+  },
+  rg: {
+    type: String,
+    default: null,
+  },
+  dataNascimento: {
+    type: Date,
+    default: null,
+  },
+  naturalidade: {
+    type: String,
+    required: true,
+  },
+  filiacao: {
+    type: String,
     required: true,
   },
   status: {

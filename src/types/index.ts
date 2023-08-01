@@ -56,13 +56,17 @@ export interface DocumentoPessoaType {
 }
 
 export interface GestorType {
-  _id: string;
+  _id?: string;
   nome: string;
   telefone: string;
   email: string;
   avatar: string | null;
-  documento: DocumentoPessoaType;
-  status: boolean;
+  cpf: string;
+  rg: string | null;
+  dataNascimento: Date | null;
+  naturalidade: string;
+  filiacao: string;
+  status?: boolean;
 }
 
 export interface BarbeariaType {
