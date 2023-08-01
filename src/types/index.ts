@@ -70,18 +70,19 @@ export interface GestorType {
 }
 
 export interface BarbeariaType {
-  _id: string;
-  _id_gestor: string;
+  _id?: string;
+  idGestor: string;
   plano: PlanosEnum;
   nome: string;
+  nomeFantasia: string;
+  documento: string;
   endereco: EnderecoType;
   logo: string | null;
   slogan: string | null;
   expediente: ExpedienteType[];
-  documento: DocumentoEmpresaType | null;
   sobre: string;
   contato: ContatoType;
-  status: boolean;
+  status?: boolean;
 }
 
 export interface ServicoType {

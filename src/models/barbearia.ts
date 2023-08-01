@@ -1,10 +1,6 @@
 import mongoose, { Types } from "mongoose";
 import { PlanosEnum } from "../types";
-import {
-  contatoSchema,
-  enderecoSchema,
-  expedienteSchema,
-} from ".";
+import { contatoSchema, enderecoSchema, expedienteSchema } from ".";
 
 const barbeariaSchema = new mongoose.Schema({
   idGestor: {
