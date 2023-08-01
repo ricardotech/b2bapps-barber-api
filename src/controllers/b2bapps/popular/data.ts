@@ -1,5 +1,6 @@
 import {
   BarbeariaType,
+  BarbeiroType,
   GestorType,
   PlanosEnum,
   ServicoType,
@@ -252,6 +253,178 @@ export const ServicoMock: ServicoType[] = [
     duracaoMinutos: 90,
   },
 ];
-export const BarbeiroMock = [];
+export const BarbeiroMock: BarbeiroType[] = [
+  {
+    idBarbearia: "64c929c0d7bac6361246af01",
+    nome: "Barbeiro 1",
+    documento: "11111111111",
+    avatar: null,
+    email: "barbeiro.1@dominio.com",
+    telefone: "11111111111",
+    servicos: ["64c9549c02f9382c34e8e2be", "64c9549c02f9382c34e8e2c0"],
+    expediente: [
+      {
+        dia: 1,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 15:00"),
+      },
+    ],
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af01",
+    nome: "Barbeiro 2",
+    documento: "22222222222",
+    avatar: null,
+    email: "barbeiro.2@dominio.com",
+    telefone: "11222222222",
+    servicos: [
+      "64c9549c02f9382c34e8e2be",
+      "64c9549c02f9382c34e8e2bf",
+      "64c9549c02f9382c34e8e2c0",
+    ],
+    expediente: [
+      {
+        dia: 1,
+        horarioInicio: new Date("2021-01-01 15:00"),
+        horarioFim: new Date("2021-01-01 18:00"),
+      },
+    ],
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af05",
+    nome: "Barbeiro 3",
+    documento: "33333333333",
+    avatar: null,
+    email: "barbeiro.3@dominio.com",
+    telefone: "11333333333",
+    servicos: ["64c9549c02f9382c34e8e2c1", "64c9549c02f9382c34e8e2c2"],
+    expediente: [
+      {
+        dia: 1,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 18:00"),
+      },
+      {
+        dia: 2,
+        horarioInicio: new Date("2021-01-01 12:00"),
+        horarioFim: new Date("2021-01-01 17:00"),
+      },
+    ],
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af05",
+    nome: "Barbeiro 4",
+    documento: "44444444444",
+    avatar: null,
+    email: "barbeiro.4@dominio.com",
+    telefone: "11444444444",
+    servicos: [],
+    expediente: [
+      {
+        dia: 1,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 18:00"),
+      },
+      {
+        dia: 2,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 15:00"),
+      },
+      {
+        dia: 3,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 22:00"),
+      },
+    ],
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af0a",
+    nome: "Barbeiro 5",
+    documento: "55555555555",
+    avatar: null,
+    email: "barbeiro.5@dominio.com",
+    telefone: "11555555555",
+    servicos: ["64c9549c02f9382c34e8e2c3"],
+    expediente: [
+      {
+        dia: 1,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 18:00"),
+      },
+    ],
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af0a",
+    nome: "Barbeiro 6",
+    documento: "66666666666",
+    avatar: null,
+    email: "barbearia.6@dominio.com",
+    telefone: "11666666666",
+    servicos: ["64c9549c02f9382c34e8e2c3", "64c9549c02f9382c34e8e2c4"],
+    expediente: [
+      {
+        dia: 1,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 18:00"),
+      },
+      {
+        dia: 2,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 15:00"),
+      },
+    ],
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af0f",
+    nome: "Barbeiro 7",
+    documento: "77777777777",
+    avatar: null,
+    email: "barbeiro.7@dominio.com",
+    telefone: "11777777777",
+    servicos: [
+      "64c9549c02f9382c34e8e2c7",
+      "64c9549c02f9382c34e8e2c5",
+      "64c9549c02f9382c34e8e2c6",
+    ],
+    expediente: [
+      {
+        dia: 1,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 18:00"),
+      },
+      {
+        dia: 2,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 15:00"),
+      },
+      {
+        dia: 3,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 22:00"),
+      },
+    ],
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af0f",
+    nome: "Barbeiro 8",
+    documento: "88888888888",
+    avatar: null,
+    email: "barbeiro.8@dominio.com",
+    telefone: "11888888888",
+    servicos: ["64c9549c02f9382c34e8e2c5"],
+    expediente: [
+      {
+        dia: 2,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 15:00"),
+      },
+      {
+        dia: 4,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 22:00"),
+      },
+    ],
+  },
+];
 export const ClienteMock = [];
 export const AgendamentoMock = [];

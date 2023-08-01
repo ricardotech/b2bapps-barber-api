@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import Gestor from "../../../models/gestor";
-import { BarbeariaMock, GestorMock, ServicoMock } from "./data";
+import { BarbeariaMock, BarbeiroMock, GestorMock, ServicoMock } from "./data";
 import Barbearia from "../../../models/barbearia";
 import Servico from "../../../models/servico";
+import Barbeiro from "../../../models/barbeiro";
 
 export async function popularGestor(req: Request, res: Response) {
   try {
@@ -35,6 +36,16 @@ export async function popularServico(req: Request, res: Response) {
     return res.status(500).json({ error });
   }
 }
-export async function popularBarbeiro(req: Request, res: Response) {}
+export async function popularBarbeiro(req: Request, res: Response) {
+  try {
+    await Barbeiro.insertMany(BarbeiroMock).then((result) => {
+      res
+        .status(201)
+        .json({ mensagem: "Barbeiro populado com sucesso", result });
+    });
+  } catch (error) {
+    return res.status(500).json({ error });
+  }
+}
 export async function popularCliente(req: Request, res: Response) {}
 export async function popularAgendamento(req: Request, res: Response) {}
