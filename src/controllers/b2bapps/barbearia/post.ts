@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import { PlanosEnum } from "../../types";
-import Gestor from "../../models/gestor";
-import Barbearia from "../../models/barbearia";
+import Gestor from "../../../models/gestor";
+import { PlanosEnum } from "../../../types";
+import Barbearia from "../../../models/barbearia";
 
 export async function createBarberShop(req: Request, res: Response) {
   try {

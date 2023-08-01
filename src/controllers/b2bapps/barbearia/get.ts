@@ -11,3 +11,5 @@ export async function getAllBarberShop(req: Request, res: Response) {
     return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
 }
+
+export async function getBarberShopById(req: Request, res: Response) {}

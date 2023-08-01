@@ -1,8 +1,11 @@
 import { Router } from "express";
 import verificaId from "../../middleware/verificaId";
-import { getAllBarberShop } from "../../controllers/b2bapps/barbearia/get";
-import { createBarberShop } from "../../utils/barbearia/post";
-import { deleteBarbearia } from "../../utils/barbearia/delete";
+import {
+  getAllBarberShop,
+  getBarberShopById,
+} from "../../controllers/b2bapps/barbearia/get";
+import { deleteBarbearia } from "../../controllers/b2bapps/barbearia/delete";
+import { createBarberShop } from "../../controllers/b2bapps/barbearia/post";
 import {
   updateAddressBarberShop,
   updateBarbershopOpeningHours,
@@ -12,8 +15,7 @@ import {
   updatePlanBarberShop,
   updateSloganBarberShop,
   updateStatusBarberShop,
-} from "../../utils/barbearia/patch";
-import { getBarberShopById } from "../../utils/barbearia/get";
+} from "../../controllers/b2bapps/barbearia/patch";
 
 const b2b_barbeariaRouter = Router();
 

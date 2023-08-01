@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Barbearia from "../../models/barbearia";
+import Barbearia from "../../../models/barbearia";
 
 export async function deleteBarbearia(req: Request, res: Response) {
   try {
