@@ -1,12 +1,12 @@
 import { Router } from "express";
 import Autenticacao from "../middleware/auth";
-import agendamentoRouter from "./agendamento";
-import barbeariaRouter from "./barbearia";
-import clienteRouter from "./cliente";
-import gestorRouter from "./gestor";
-import servicoRouter from "./servico";
-import usuarioRouter from "./usuario";
+import clienteRouter from "./sistema/cliente";
+import gestorRouter from "./sistema/gestor";
 import b2bappsRouter from "./b2bapps";
+import agendamentoRouter from "./sistema/agendamento";
+import barbeariaRouter from "./sistema/barbearia";
+import servicoRouter from "./sistema/servico";
+import usuarioRouter from "./sistema/usuario";
 
 const router = Router();
 

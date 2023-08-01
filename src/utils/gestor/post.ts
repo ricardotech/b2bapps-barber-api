@@ -30,9 +30,6 @@ export async function createGestor(req: Request, res: Response) {
     if (cpf.length !== 11) {
       return res.status(400).json({ message: "CPF inválido" });
     }
-    if(!(dataNascimento instanceof Date) && dataNascimento !== null) {
-      return res.status(400).json({ message: "Data de nascimento inválida" });
-    }
     await Gestor.create({
       nome,
       telefone,

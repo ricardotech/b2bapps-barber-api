@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { getBarberShopByGestor, getGestorById } from "../utils/gestor/get";
-import { createGestor } from "../utils/gestor/post";
-import { deleteGestor } from "../utils/gestor/delete";
-import verificaId from "../middleware/verificaId";
-import { updateAvatarGestor, updateEmailGestor, updatePhoneGestor } from "../utils/gestor/patch";
+import { getBarberShopByGestor, getGestorById } from "../../utils/gestor/get";
+import { createGestor } from "../../utils/gestor/post";
+import { deleteGestor } from "../../utils/gestor/delete";
+import verificaId from "../../middleware/verificaId";
+import { updateAvatarGestor, updateEmailGestor, updatePhoneGestor } from "../../utils/gestor/patch";
 
 const gestorRouter = Router();
 
