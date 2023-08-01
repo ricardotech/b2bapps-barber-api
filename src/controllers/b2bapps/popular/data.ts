@@ -1,4 +1,9 @@
-import { BarbeariaType, GestorType, PlanosEnum } from "../../../types";
+import {
+  BarbeariaType,
+  GestorType,
+  PlanosEnum,
+  ServicoType,
+} from "../../../types";
 
 export const GestorMock: GestorType[] = [
   {
@@ -75,35 +80,35 @@ export const BarbeariaMock: BarbeariaType[] = [
     nomeFantasia: "Barbearia 2",
     documento: "22222222222", // CPF
     endereco: {
-        cep: "00000000",
-        rua: "Rua Teste",
-        numero: "123",
-        bairro: "Bairro Teste",
-        cidade: "Cidade Teste",
-        estado: "SP",
+      cep: "00000000",
+      rua: "Rua Teste",
+      numero: "123",
+      bairro: "Bairro Teste",
+      cidade: "Cidade Teste",
+      estado: "SP",
     },
     logo: null,
     slogan: "Slogan da Barbearia 2",
     expediente: [
-        {
-            dia: 1,
-            horarioInicio: new Date("2021-01-01 08:00"),
-            horarioFim: new Date("2021-01-01 18:00"),
-        },
-        {
-            dia: 2,
-            horarioInicio: new Date("2021-01-01 08:00"),
-            horarioFim: new Date("2021-01-01 18:00"),
-        }
+      {
+        dia: 1,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 18:00"),
+      },
+      {
+        dia: 2,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 18:00"),
+      },
     ],
     sobre: "Sobre a Barbearia 2",
     contato: {
-        telefone: "12999999999",
-        email: "barbearia.2@dominio.com.br",
-        instagram: null,
-        facebook: null,
-        whatsapp: null,
-    }
+      telefone: "12999999999",
+      email: "barbearia.2@dominio.com.br",
+      instagram: null,
+      facebook: null,
+      whatsapp: null,
+    },
   },
   {
     idGestor: "64c91a20c3f64689c32392da",
@@ -112,35 +117,35 @@ export const BarbeariaMock: BarbeariaType[] = [
     nomeFantasia: "Barbearia 3",
     documento: "33333333333333", // CNPJ
     endereco: {
-        cep: "00000000",
-        rua: "Rua Teste",
-        numero: "123",
-        bairro: "Bairro Teste",
-        cidade: "Cidade Teste",
-        estado: "SP",
+      cep: "00000000",
+      rua: "Rua Teste",
+      numero: "123",
+      bairro: "Bairro Teste",
+      cidade: "Cidade Teste",
+      estado: "SP",
     },
     logo: null,
     slogan: "Slogan da Barbearia 3",
     expediente: [
-        {
-            dia: 1,
-            horarioInicio: new Date("2021-01-01 08:00"),
-            horarioFim: new Date("2021-01-01 18:00"),
-        },
-        {
-            dia: 2,
-            horarioInicio: new Date("2021-01-01 08:00"),
-            horarioFim: new Date("2021-01-01 18:00"),
-        }
+      {
+        dia: 1,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 18:00"),
+      },
+      {
+        dia: 2,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 18:00"),
+      },
     ],
     sobre: "Sobre a Barbearia 3",
     contato: {
-        telefone: "13999999999",
-        email: "barbearia.2@dominio.com.br",
-        instagram: null,
-        facebook: null,
-        whatsapp: null,
-    }
+      telefone: "13999999999",
+      email: "barbearia.2@dominio.com.br",
+      instagram: null,
+      facebook: null,
+      whatsapp: null,
+    },
   },
   {
     idGestor: "64c91a20c3f64689c32392db",
@@ -149,33 +154,104 @@ export const BarbeariaMock: BarbeariaType[] = [
     nomeFantasia: "Barbearia 4",
     documento: "44444444444444", // CNPJ,
     endereco: {
-        cep: "00000000",
-        rua: "Rua Teste",
-        numero: "123",
-        bairro: "Bairro Teste",
-        cidade: "Cidade Teste",
-        estado: "SP",
+      cep: "00000000",
+      rua: "Rua Teste",
+      numero: "123",
+      bairro: "Bairro Teste",
+      cidade: "Cidade Teste",
+      estado: "SP",
     },
     logo: null,
     slogan: "Slogan da Barbearia 4",
     expediente: [
-        {
-            dia: 1,
-            horarioInicio: new Date("2021-01-01 08:00"),
-            horarioFim: new Date("2021-01-01 18:00"),
-        },
+      {
+        dia: 1,
+        horarioInicio: new Date("2021-01-01 08:00"),
+        horarioFim: new Date("2021-01-01 18:00"),
+      },
     ],
     sobre: "Sobre a Barbearia 4",
     contato: {
-        telefone: "14999999999",
-        email: "barbearia.4@dominio.com.br",
-        instagram: null,
-        facebook: null,
-        whatsapp: null,
-    }
+      telefone: "14999999999",
+      email: "barbearia.4@dominio.com.br",
+      instagram: null,
+      facebook: null,
+      whatsapp: null,
+    },
   },
 ];
-export const ServicoMock = [];
+export const ServicoMock: ServicoType[] = [
+  {
+    idBarbearia: "64c929c0d7bac6361246af01",
+    nome: "Corte de Cabelo",
+    imagem: null,
+    preco: 30,
+    duracaoMinutos: 30,
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af01",
+    nome: "Barba",
+    imagem: null,
+    preco: 15,
+    duracaoMinutos: 20,
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af01",
+    nome: "Corte de Cabelo + Barba",
+    imagem: null,
+    preco: 45,
+    duracaoMinutos: 50,
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af05",
+    nome: "Corte de Cabelo",
+    imagem: null,
+    preco: 30,
+    duracaoMinutos: 30,
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af05",
+    nome: "Sobrancelha",
+    imagem: null,
+    preco: 15,
+    duracaoMinutos: 10,
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af0a",
+    nome: "Corte de Cabelo",
+    imagem: null,
+    preco: 30,
+    duracaoMinutos: 30,
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af0a",
+    nome: "Pintura de Cabelo",
+    imagem: null,
+    preco: 55,
+    duracaoMinutos: 60,
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af0f",
+    nome: "Corte de Cabelo",
+    imagem: null,
+    preco: 30,
+    duracaoMinutos: 30,
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af0f",
+    nome: "Laqueamento de Cabelo",
+    imagem: null,
+    preco: 40,
+    duracaoMinutos: 10,
+  },
+  {
+    idBarbearia: "64c929c0d7bac6361246af0f",
+    nome: "Pintura de Cabelo + Corte",
+    imagem: null,
+    preco: 60,
+    duracaoMinutos: 90,
+  },
+];
 export const BarbeiroMock = [];
 export const ClienteMock = [];
 export const AgendamentoMock = [];
