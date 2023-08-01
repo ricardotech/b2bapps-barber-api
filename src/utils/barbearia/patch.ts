@@ -18,3 +18,11 @@ export async function updateStatusBarberShop(req: Request, res: Response) {
     return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
 }
+
+export async function updateNameBarberShop(req: Request, res: Response) {}
+export async function updateLogoBarberShop(req: Request, res: Response) {}
+export async function updateSloganBarberShop(req: Request, res: Response) {}
+export async function updateContactBarberShop(req: Request, res: Response) {}
+export async function updateAddressBarberShop(req: Request, res: Response) {}
+export async function updatePlanBarberShop(req: Request, res: Response) {}
+export async function updateBarbershopOpeningHours(req: Request, res: Response) {}
