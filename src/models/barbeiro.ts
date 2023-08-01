@@ -24,6 +24,7 @@ const barbeiroSchema = new mongoose.Schema({
     type: String,
     max: 320,
     unique: true,
+    required: true,
   },
   telefone: {
     type: String,
