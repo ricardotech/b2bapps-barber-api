@@ -45,9 +45,36 @@ export async function updateNameBarberShop(req: Request, res: Response) {
     return res.status(500).json({ mensagem: "Erro interno do servidor" });
   }
 }
-export async function updateLogoBarberShop(req: Request, res: Response) {}
+export async function updateLogoBarberShop(req: Request, res: Response) {
+  try {
+    const { id } = req.params;
+    const { logo } = req.body;
+    const barbearia = await Barbearia.findById(id);
+    if (!barbearia) {
+      return res.status(404).json({ mensagem: "Barbearia não encontrada" });
+    }
+    if (!logo) {
+      return res.status(400).json({ mensagem: "Dados insuficientes" });
+    }
+    await Barbearia.findByIdAndUpdate(id, { logo })
+      .then(() => {
+        return res
+          .status(200)
+          .json({ mensagem: "Logo da barbearia atualizado com sucesso" });
+      })
+      .catch((err) => {
+        return res.status(500).json({ mensagem: err.message });
+      });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ mensagem: "Erro interno do servidor" });
+  }
+}
 export async function updateSloganBarberShop(req: Request, res: Response) {}
 export async function updateContactBarberShop(req: Request, res: Response) {}
 export async function updateAddressBarberShop(req: Request, res: Response) {}
 export async function updatePlanBarberShop(req: Request, res: Response) {}
-export async function updateBarbershopOpeningHours(req: Request, res: Response) {}
+export async function updateBarbershopOpeningHours(
+  req: Request,
+  res: Response
+) {}
